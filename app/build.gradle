@@ -8,6 +8,8 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
+    id 'java'
+    id 'jacoco'
 }
 
 repositories {
@@ -46,4 +48,11 @@ tasks.withType(JavaExec) {
     // 標準入出力もUTF-8にする設定（念のため）
     systemProperty "sun.stdout.encoding", "UTF-8"
     systemProperty "sun.stderr.encoding", "UTF-8"
+}
+
+jacocoTestReport {
+    reports {
+        html.required = true
+        xml.required = true
+    }
 }
